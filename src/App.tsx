@@ -3,36 +3,38 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { Button } from 'flowbite-react';
+import Footer from './pages/LandingPage/components/Footer';
+import Features from './pages/LandingPage/Features/Features';
+import FAQ from './pages/LandingPage/FAQ/FAQ';
+import Mapel from './pages/LandingPage/components/Mapel';
+import Semester from './pages/LandingPage/components/Semester';
+import ListMateri from './pages/LandingPage/components/ListMateri';
+import DetailMateri from './pages/LandingPage/components/MateriSpesifik';
+import SoalPilgan from './pages/LandingPage/components/SoalPilgan';
+import SoalIsian from './pages/LandingPage/components/SoalIsian';
+import ReviewSoal from './pages/LandingPage/components/ReviewSoal';
+import ListSoal from './pages/LandingPage/components/ListSoal';
+import SignUp from './pages/LandingPage/components/SignUp';
+import Login from './pages/LandingPage/components/Login';
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <div className="flex min-h-svh flex-col items-center justify-center">
-          <Button className="bg-red-500 hover:bg-blue-600">Custom Button</Button>
-        </div>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <SignUp />
+      <Login />
+      <Semester />
+      <Mapel />
+      <ListMateri />
+      <DetailMateri />
+      <SoalPilgan />
+      <SoalIsian />
+      <ReviewSoal />
+      <ListSoal />
+      <Features />
+      <FAQ />
+      <Footer />
     </>
   )
 }
