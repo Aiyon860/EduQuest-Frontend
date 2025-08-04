@@ -4,7 +4,7 @@ const ReviewSoal = () => {
     const totalSoal = 5;
     const jawabanBenar = 4;
     const jawaban = 'B. Grafit';
-    const benar = true;
+    // const benar = true;
     const penjelasan = `Pensil menggunakan grafit sebagai bahan utamanya untuk menulis atau menggambar.
 
 Lebih tepatnya, inti pensil (yang sering disebut "mata pensil") terbuat dari campuran grafit dan tanah liat. Campuran ini kemudian dibakar dan dibentuk menjadi batang tipis. Jumlah tanah liat dan grafit menentukan tingkat kekerasan atau kelembutan pensil.`;

@@ -16,6 +16,7 @@ const HeroImage = () => {
       }}
       whileHover={{ rotateZ: 3 }}
       whileTap={{ scale: 0.8 }}
+      loading="eager"
     />
   );
 }

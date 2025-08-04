@@ -4,7 +4,7 @@ import SubmitMessageButton from "@/pages/LandingPage/Contact/components/ContactB
 const ContactForm = () => {
   return (
     <form action="#" className="flex flex-col justify-start space-y-8">
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="flex flex-col items-start">
           <LabelInput
             label="Nama"

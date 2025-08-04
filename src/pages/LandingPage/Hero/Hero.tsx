@@ -1,6 +1,6 @@
 import CTA from "@/pages/LandingPage/Hero/components/CTA";
 import Heading from "@/pages/LandingPage/Hero/components/HeroHeading";
-import Image from "@/pages/LandingPage/Hero/components/HeroImage";
+import HeroImage from "@/pages/LandingPage/Hero/components/HeroImage";
 
 const Hero = () => {
   return (
@@ -11,7 +11,7 @@ const Hero = () => {
           <CTA />
         </div>
         <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
-          <Image />
+          <HeroImage />
         </div>
       </div>
     </section>

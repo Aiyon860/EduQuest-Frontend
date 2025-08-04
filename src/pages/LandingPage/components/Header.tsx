@@ -20,7 +20,7 @@ const Header = () => {
 
   const menus = [
     { name: "Beranda", href: "#hero" },
-    { name: "Fitur", href: "#feature" },
+    { name: "Fitur", href: "#features" },
     { name: "Testimoni", href: "#testimony" },
     { name: "FAQ", href: "#faq" },
     { name: "Kontak", href: "#contact" },
