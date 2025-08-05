@@ -4,14 +4,12 @@ const ReviewSoal = () => {
     const totalSoal = 5;
     const jawabanBenar = 4;
     const jawaban = 'B. Grafit';
-    // const benar = true;
     const penjelasan = `Pensil menggunakan grafit sebagai bahan utamanya untuk menulis atau menggambar.
 
 Lebih tepatnya, inti pensil (yang sering disebut "mata pensil") terbuat dari campuran grafit dan tanah liat. Campuran ini kemudian dibakar dan dibentuk menjadi batang tipis. Jumlah tanah liat dan grafit menentukan tingkat kekerasan atau kelembutan pensil.`;
 
     return (
         <section className="w-full max-w-5xl mx-auto px-4 py-10">
-            {/* Judul dan Progress */}
             <div className="mb-6">
                 <h2 className="text-2xl font-extrabold text-gray-900">
                     Review Soal <span className="font-normal">| IPA</span> <span className="text-gray-500">#{soalKe}</span>
@@ -26,12 +24,9 @@ Lebih tepatnya, inti pensil (yang sering disebut "mata pensil") terbuat dari cam
 
             <div className="flex flex-col lg:flex-row items-start justify-between gap-6">
                 <div className="w-full lg:w-3/4">
-                    {/* Pertanyaan */}
                     <div className="mb-4 text-gray-800 font-semibold bg-gray-100 px-4 py-2 rounded-lg border border-gray-300">
                         Pertanyaan {soalKe}/{totalSoal}: Bahan dasar untuk pembuatan pensil adalah seperti....
                     </div>
-
-                    {/* Jawaban dan Status */}
                     <p className="mb-2 text-left font-medium text-gray-900">Jawabanmu : {jawaban}</p>
 
                     <div className="flex flex-wrap items-center gap-4 mb-4">
@@ -43,7 +38,6 @@ Lebih tepatnya, inti pensil (yang sering disebut "mata pensil") terbuat dari cam
                         </span>
                     </div>
 
-                    {/* Penjelasan */}
                     <div className="bg-white border border-gray-300 rounded-lg p-4 mb-6">
                         {penjelasan.split('\n').map((paragraf, idx) => (
                             <p key={idx} className="mb-2 text-gray-800">{paragraf}</p>
@@ -51,7 +45,6 @@ Lebih tepatnya, inti pensil (yang sering disebut "mata pensil") terbuat dari cam
                     </div>
                 </div>
 
-                {/* Navigasi Soal */}
                 <div className="flex flex-col gap-4 items-center w-full lg:w-1/4">
                     <div className="bg-blue-600 text-white w-full text-center p-4 rounded-lg font-bold text-xl shadow-md">
                         <div>{jawabanBenar}/{totalSoal}</div>
@@ -75,7 +68,6 @@ Lebih tepatnya, inti pensil (yang sering disebut "mata pensil") terbuat dari cam
                 </div>
             </div>
 
-            {/* Tombol Next */}
             <div className="flex justify-end mt-6">
                 <button className="flex items-center gap-1 bg-[#003566] hover:bg-blue-800 text-white px-4 py-2 rounded-md text-sm font-medium">
                     Next

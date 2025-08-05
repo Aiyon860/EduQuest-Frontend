@@ -16,6 +16,10 @@ import ReviewSoal from '@/pages/ReviewSoal/ReviewSoal';
 import ListSoal from '@/pages/HistoryPengerjaan/ListSoal';
 import SignUp from '@/pages/SignUp/SignUp';
 import Login from '@/pages/Login/Login';
+import Kelas from '@/pages/Kelas/Kelas';
+import MisiHarian from '@/pages/MisiHarian/MisiHarian';
+import PeringkatGlobal from '@/pages/PapanPeringkat/PeringkatGlobal';
+
 
 function App() {
   return (
@@ -24,7 +28,7 @@ function App() {
     //   <Login />
     //   <Semester />
     //   <Mapel />
-    //   <ListMateri />
+    //   <ListMateri /> 
     //   <DetailMateri />
     //   <SoalPilgan />
     //   <SoalIsian />
@@ -37,6 +41,11 @@ function App() {
     <Routes>
       <Route path="/" element={<LandingPageLayout />} />
       <Route path="/*" element={<CoreAppLayout />} />
+      <Route path="/materi" element={<ListMateri />} />
+      <Route path="/review-soal" element={<ReviewSoal />} />
+      <Route path="/kelas" element={<Kelas />} />
+      <Route path="/misi-harian" element={<MisiHarian />} />
+      <Route path="/peringkat-global" element={<PeringkatGlobal />} />
     </Routes>
   )
 }

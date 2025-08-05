@@ -4,11 +4,11 @@ const ListMateri = () => {
         "Hewan Karnivora dan Herbivora",
         "Sistem Pencernaan Hewan",
         "Rantai Makanan",
-        "Daur Air"
+        "Daur Air",
     ];
 
     return (
-        <section className="w-full px-4 py-10 max-w-4xl mx-auto">
+        <section className="w-full px-5 py-20 max-w-4xl mx-auto">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
                 <h2 className="text-2xl font-extrabold text-gray-900">
                     Materi Semester 1 <span className="font-normal">| IPA</span>

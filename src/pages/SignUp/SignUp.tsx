@@ -1,11 +1,11 @@
 import GambarMasuk from "@/assets/vector.png";
 import Logo from "@/assets/eduquest.png";
+
 const SignUp = () => {
     return (
         <div className="min-h-screen flex items-center justify-center bg-white p-5">
             <div className="w-full max-w-4xl bg-white shadow-md rounded-lg overflow-hidden grid grid-cols-1 md:grid-cols-2">
 
-                {/* Left Illustration */}
                 <div className="hidden md:block bg-blue-100">
                     <img
                         src={GambarMasuk}
@@ -14,20 +14,15 @@ const SignUp = () => {
                     />
                 </div>
 
-                {/* Right Form */}
                 <div className="p-8 md:p-12 flex flex-col justify-center">
-                    {/* Logo & Heading */}
                     <div className="mb-6 text-left">
                         <div className="w-12 h-12 mb-2">
-                            {/* Ganti dengan ikon/logo sesuai keinginan */}
                             <img src={Logo} alt="EduQuest Logo" />
                         </div>
                         <h2 className="mt-10 text-2xl font-bold text-gray-800">Selamat Datang di EduQuest!</h2>
                         <p className="text-left text-sm text-gray-500 mt-1">Silakan buat akun terlebih dahulu</p>
                     </div>
 
-
-                    {/* Form */}
                     <form className="space-y-8">
                         <div>
                             <label className="block text-left text-gray-700 font-medium mb-1">Nama</label>
