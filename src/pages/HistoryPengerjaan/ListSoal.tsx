@@ -11,14 +11,12 @@ export default function HistoryList() {
     <div className="max-w-3xl mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">History Pengerjaan</h1>
 
-      {/* Search Input */}
       <input
         type="text"
         placeholder="Cari Soal"
         className="w-full p-2 border rounded-full mb-4 focus:outline-none"
       />
 
-      {/* History Items */}
       <div className="space-y-3">
         {data.map((item, index) => (
           <div key={index} className="flex items-center bg-white border rounded px-4 py-2 shadow-sm">
@@ -30,7 +28,6 @@ export default function HistoryList() {
         ))}
       </div>
 
-      {/* Pagination */}
       <div className="flex justify-center mt-6 space-x-2 items-center text-sm">
         <button className="px-3 py-1 bg-blue-700 text-white rounded">Previous</button>
         <button className="px-3 py-1 bg-blue-800 text-white rounded">1</button>

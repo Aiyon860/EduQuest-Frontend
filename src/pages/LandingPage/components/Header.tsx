@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Logo from "@/components/Logo";
 import { AnimatePresence, motion } from "motion/react";
+import { Link } from "react-router";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,12 +37,16 @@ const Header = () => {
           {/* Right-side buttons & hamburger */}
           <div className="flex md:order-2 space-x-3 md:space-x-0">
             <div className="hidden sm:flex gap-3">
-              <button className="text-black border border-black bg-white hover:bg-black focus:ring-4 focus:outline-none focus:ring-black font-medium rounded-lg text-sm px-4 py-2 text-center hover:text-white transition-colors cursor-pointer">
-                Login
-              </button>
-              <button className="text-white bg-[#023E8A] hover:bg-[#023E8A]/70 focus:ring-4 focus:outline-none focus:ring-[#023E8A] font-medium rounded-lg text-sm px-4 py-2 text-center transition-all cursor-pointer">
-                Sign Up
-              </button>
+              <Link to="/login">
+                <button className="text-black border border-black bg-white hover:bg-black focus:ring-2 focus:outline-none focus:ring-offset-2 focus:ring-black font-medium rounded-lg text-sm px-4 py-2 text-center hover:text-white transition-colors cursor-pointer">
+                  Login
+                </button>
+              </Link>
+              <Link to="/signup">
+                <button className="text-white bg-[#023E8A] hover:bg-[#023E8A]/70 focus:ring-2 focus:outline-none focus:ring-offset-2 focus:ring-[#023E8A] font-medium rounded-lg text-sm px-4 py-2 text-center transition-all cursor-pointer">
+                  Sign Up
+                </button>
+              </Link>
             </div>
 
             {/* Hamburger menu (mobile only) */}
@@ -111,14 +116,16 @@ const Header = () => {
                   ))}
                 </ul>
 
-                <div className="grid grid-cols-2 gap-3 w-full mt-4 sm:hidden">
-                  <button className="text-black border border-black bg-white hover:bg-black focus:ring-4 focus:outline-none focus:ring-black font-medium rounded-lg text-sm px-4 py-2 text-center hover:text-white transition-colors cursor-pointer">
+                <Link to="/login">
+                  <button className="text-black border border-black bg-white hover:bg-black focus:ring-2 focus:ring-offset-2 focus:outline-none focus:ring-black font-medium rounded-lg text-sm px-4 py-2 text-center hover:text-white transition-colors cursor-pointer">
                     Login
                   </button>
-                  <button className="text-white bg-[#023E8A] hover:bg-[#023E8A]/70 focus:ring-4 focus:outline-none focus:ring-[#023E8A] font-medium rounded-lg text-sm px-4 py-2 text-center transition-colors cursor-pointer">
+                </Link>
+                <Link to="/signup">
+                  <button className="text-white bg-[#023E8A] hover:bg-[#023E8A]/70 focus:ring-2 focus:ring-offset-2 focus:outline-none focus:ring-[#023E8A] font-medium rounded-lg text-sm px-4 py-2 text-center transition-colors cursor-pointer">
                     Sign Up
                   </button>
-                </div>
+                </Link>
               </motion.div>
             )}
           </AnimatePresence>

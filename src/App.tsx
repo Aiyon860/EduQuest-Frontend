@@ -6,9 +6,6 @@ import LandingPageLayout from '@/layouts/LandingPage'
 import Dashboard from '@/pages/Dashboard/Dashboard'
 import SignUp from '@/pages/SignUp/SignUp'
 import Login from '@/pages/Login/Login'
-import Features from '@/pages/LandingPage/Features/Features'
-import FAQ from '@/pages/LandingPage/FAQ/FAQ'
-import Footer from '@/pages/LandingPage/components/Footer'
 import Mapel from '@/pages/MataPelajaran/Mapel'
 import Semester from '@/pages/Semester/Semester'
 import ListMateri from '@/pages/Materi/ListMateri'
@@ -17,6 +14,9 @@ import SoalPilgan from '@/pages/SoalPilgan/SoalPilgan'
 import SoalIsian from '@/pages/SoalIsian/SoalIsian'
 import ReviewSoal from '@/pages/ReviewSoal/ReviewSoal'
 import ListSoal from '@/pages/HistoryPengerjaan/ListSoal'
+import MisiHarian from '@/pages/MisiHarian/MisiHarian'
+import PeringkatGlobal from '@/pages/PapanPeringkat/PeringkatGlobal'
+import Kelas from '@/pages/Kelas/Kelas'
 
 function App() {
   return (
@@ -24,14 +24,12 @@ function App() {
       {/* Landing page layout */}
       <Route path="/" element={<LandingPageLayout />} />
 
+      <Route path="signup" element={<SignUp />} />
+      <Route path="login" element={<Login />} />
+
       {/* Core app layout */}
       <Route path="/*" element={<CoreAppLayout />}>
         <Route path="dashboard" element={<Dashboard />} />
-        <Route path="signup" element={<SignUp />} />
-        <Route path="login" element={<Login />} />
-        <Route path="features" element={<Features />} />
-        <Route path="faq" element={<FAQ />} />
-        <Route path="footer" element={<Footer />} />
         <Route path="mapel" element={<Mapel />} />
         <Route path="semester" element={<Semester />} />
         <Route path="materials/:level" element={<ListMateri />} />
@@ -42,6 +40,9 @@ function App() {
         <Route path="soal/isian" element={<SoalIsian />} />
         <Route path="soal/review" element={<ReviewSoal />} />
         <Route path="histories" element={<ListSoal />} />
+        <Route path="quests" element={<MisiHarian />} />
+        <Route path="leaderboard/global" element={<PeringkatGlobal />} />
+        <Route path="kelas" element={<Kelas />} />
       </Route>
     </Routes>
   )

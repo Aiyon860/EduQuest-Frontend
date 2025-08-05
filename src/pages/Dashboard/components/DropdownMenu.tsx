@@ -33,7 +33,7 @@ const DropdownMenu = ({
   }, [isOpen]);
 
   return (
-    <li>
+    <>
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
@@ -86,7 +86,7 @@ const DropdownMenu = ({
           );
         })}
       </ul>
-    </li>
+    </>
   );
 };
 

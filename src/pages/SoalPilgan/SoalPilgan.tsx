@@ -12,14 +12,12 @@ const LatihanSoal = () => {
 
     return (
         <section className="w-full px-4 py-10 max-w-3xl mx-auto">
-            {/* Judul */}
             <div className="mb-6">
                 <h2 className="text-2xl font-extrabold text-gray-900">
                     Latihan Soal <span className="font-normal">| IPA</span>
                 </h2>
             </div>
 
-            {/* Pertanyaan */}
             <div className="flex items-start bg-white border border-gray-200 rounded-lg shadow-sm px-4 py-3 mb-6">
                 <div className="bg-orange-500 text-white w-10 h-10 flex items-center justify-center rounded-md font-bold mr-4">
                     {soal.nomor}
@@ -29,7 +27,6 @@ const LatihanSoal = () => {
                 </span>
             </div>
 
-            {/* Pilihan Jawaban */}
             <div className="space-y-4 mb-6">
                 {Object.entries(soal.pilihan).map(([key, value]) => (
                     <div
@@ -44,7 +41,6 @@ const LatihanSoal = () => {
                 ))}
             </div>
 
-            {/* Tombol Next */}
             <div className="flex justify-end">
                 <button className="flex items-center gap-1 bg-[#003566] hover:bg-blue-800 text-white px-4 py-2 rounded-md text-sm font-medium">
                     Next
