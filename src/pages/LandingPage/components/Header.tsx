@@ -1,6 +1,6 @@
-import { AnimatePresence, motion } from "motion/react"; 
-import EduQuestLogo from "@/assets/eduquest-logo.png";
 import { useEffect, useState } from "react";
+import Logo from "@/components/Logo";
+import { AnimatePresence, motion } from "motion/react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,12 +31,7 @@ const Header = () => {
       <nav className="bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-200">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           {/* Logo */}
-          <a href="/" className="flex items-center space-x-3">
-            <img src={EduQuestLogo} className="h-8" alt="EduQuest Logo" />
-            <span className="self-center text-2xl plus-jakarta-sans-bold whitespace-nowrap text-black">
-              EduQuest
-            </span>
-          </a>
+          <Logo />
 
           {/* Right-side buttons & hamburger */}
           <div className="flex md:order-2 space-x-3 md:space-x-0">
