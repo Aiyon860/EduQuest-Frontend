@@ -1,39 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import { Button } from 'flowbite-react';
+import { Routes, Route } from 'react-router'
+import CoreAppLayout from '@/layouts/CoreApp'
+import LandingPageLayout from '@/layouts/LandingPage'
+
+import Dashboard from '@/pages/Dashboard/Dashboard'
+import SignUp from '@/pages/SignUp/SignUp'
+import Login from '@/pages/Login/Login'
+import Mapel from '@/pages/MataPelajaran/Mapel'
+import Semester from '@/pages/Semester/Semester'
+import ListMateri from '@/pages/Materi/ListMateri'
+import DetailMateri from '@/pages/MateriSpesifik/MateriSpesifik'
+import SoalPilgan from '@/pages/SoalPilgan/SoalPilgan'
+import SoalIsian from '@/pages/SoalIsian/SoalIsian'
+import ReviewSoal from '@/pages/ReviewSoal/ReviewSoal'
+import ListSoal from '@/pages/HistoryPengerjaan/ListSoal'
+import MisiHarian from '@/pages/MisiHarian/MisiHarian'
+import PeringkatGlobal from '@/pages/PapanPeringkat/PeringkatGlobal'
+import Kelas from '@/pages/Kelas/Kelas'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <div className="flex min-h-svh flex-col items-center justify-center">
-          <Button className="bg-red-500 hover:bg-blue-600">Custom Button</Button>
-        </div>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Routes>
+      {/* Landing page layout */}
+      <Route path="/" element={<LandingPageLayout />} />
+
+      <Route path="signup" element={<SignUp />} />
+      <Route path="login" element={<Login />} />
+
+      {/* Core app layout */}
+      <Route path="/*" element={<CoreAppLayout />}>
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="mapel" element={<Mapel />} />
+        <Route path="semester" element={<Semester />} />
+        <Route path="materials/:level" element={<ListMateri />} />
+        <Route path="materials/:level/:grade" element={<ListMateri />} />
+        <Route path="materials/:level/:grade/:semester" element={<ListMateri />} />
+        <Route path="materials/detail/:id" element={<DetailMateri />} />
+        <Route path="soal/pilgan" element={<SoalPilgan />} />
+        <Route path="soal/isian" element={<SoalIsian />} />
+        <Route path="soal/review" element={<ReviewSoal />} />
+        <Route path="histories" element={<ListSoal />} />
+        <Route path="quests" element={<MisiHarian />} />
+        <Route path="leaderboard/global" element={<PeringkatGlobal />} />
+        <Route path="kelas" element={<Kelas />} />
+      </Route>
+    </Routes>
   )
 }
 
