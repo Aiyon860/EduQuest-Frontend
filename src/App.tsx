@@ -17,6 +17,10 @@ import ListSoal from '@/pages/HistoryPengerjaan/ListSoal'
 import MisiHarian from '@/pages/MisiHarian/MisiHarian'
 import PeringkatGlobal from '@/pages/PapanPeringkat/PeringkatGlobal'
 import Kelas from '@/pages/Kelas/Kelas'
+import Profile from '@/pages/Profile/Profil'
+import Penghargaan from '@/pages/Penghargaan/Penghargaan'
+import ImportFileExcel from '@/components/ImportFileExcel'
+import ImportFilePdf from '@/components/ImportFilePdf'
 
 function App() {
   return (
@@ -43,6 +47,10 @@ function App() {
         <Route path="quests" element={<MisiHarian />} />
         <Route path="leaderboard/global" element={<PeringkatGlobal />} />
         <Route path="kelas" element={<Kelas />} />
+        <Route path="profil" element={<Profile />} />
+        <Route path="penghargaan" element={<Penghargaan />} />
+        <Route path="importexcel" element={<ImportFileExcel />} />
+        <Route path="importpdf" element={<ImportFilePdf />} />
       </Route>
     </Routes>
   )

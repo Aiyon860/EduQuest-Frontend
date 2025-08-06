@@ -4,12 +4,10 @@ const ReviewSoal = () => {
     const totalSoal = 5;
     const jawabanBenar = 4;
     const jawaban = 'B. Grafit';
-    const penjelasan = `Pensil menggunakan grafit sebagai bahan utamanya untuk menulis atau menggambar.
-
-Lebih tepatnya, inti pensil (yang sering disebut "mata pensil") terbuat dari campuran grafit dan tanah liat. Campuran ini kemudian dibakar dan dibentuk menjadi batang tipis. Jumlah tanah liat dan grafit menentukan tingkat kekerasan atau kelembutan pensil.`;
+    const penjelasan = `Pensil menggunakan grafit sebagai bahan utamanya untuk menulis atau menggambar. Lebih tepatnya, inti pensil (yang sering disebut "mata pensil") terbuat dari campuran grafit dan tanah liat. Campuran ini kemudian dibakar dan dibentuk menjadi batang tipis. Jumlah tanah liat dan grafit menentukan tingkat kekerasan atau kelembutan pensil.`;
 
     return (
-        <section className="w-full max-w-5xl mx-auto px-4 py-10">
+        <section className="w-full max-w-5xl mx-auto px-4 py-10 sm:ml-64">
             <div className="mb-6">
                 <h2 className="text-2xl font-extrabold text-gray-900">
                     Review Soal <span className="font-normal">| IPA</span> <span className="text-gray-500">#{soalKe}</span>
