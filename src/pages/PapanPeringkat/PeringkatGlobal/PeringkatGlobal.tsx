@@ -18,7 +18,7 @@ const generateSiswaDummy = () => {
 const getJenjangOptions = () => ["SD", "SMP", "SMA"];
 const getKelasOptions = () => Array.from({ length: 12 }, (_, i) => i + 1);
 
-const dataSiswa = generateSiswaDummy();
+const currentData = generateSiswaDummy();
 
 const PeringkatGlobal = () => {
     const [selectedJenjang, setSelectedJenjang] = useState("");
@@ -27,6 +27,7 @@ const PeringkatGlobal = () => {
 
     return (
         <section className="w-full flex flex-col items-center justify-center">
+            
             <div className="px-4 py-8 max-w-screen-xl mx-auto w-2xl">
                 <div className="grid grid-cols-1 gap-4 mb-6">
                     <h2 className="text-2xl font-bold text-left text-gray-900">Papan Peringkat Global</h2>
@@ -92,7 +93,7 @@ const PeringkatGlobal = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {dataSiswa.map((siswa, index) => (
+                            {currentData.map((siswa, index) => (
                                 <tr key={index} className="bg-white border-b border-gray-200">
                                     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                         {siswa.peringkat}
