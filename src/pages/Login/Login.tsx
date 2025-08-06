@@ -1,5 +1,5 @@
-import GambarMasuk from "@/assets/vector.png";
-import Logo from "@/assets/eduquest.png";
+import GambarMasuk from "@/assets/vector.webp";
+import Logo from "@/assets/eduquest.webp";
 
 const Login = () => {
   return (
@@ -58,6 +58,7 @@ const Login = () => {
                 type="password"
                 id="password"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5      "
+                
                 required
               />
             </div>

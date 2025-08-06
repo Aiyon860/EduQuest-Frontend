@@ -1,4 +1,4 @@
-import Foto from "@/assets/fitur1.png";
+import Foto from "@/assets/fitur1.webp";
 const progress = 80;
 const dataKelas = [
     { nama: "Kelas 1", link: "#", bg: "/images/bg-kelas1.jpg" },

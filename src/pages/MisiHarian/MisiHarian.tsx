@@ -1,4 +1,4 @@
-import Foto from "@/assets/fitur1.png";
+import Foto from "@/assets/fitur1.webp";
 
 const dataMapel = [
     {
