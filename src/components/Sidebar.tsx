@@ -9,9 +9,9 @@ import {
   Users,
   Award,
   History,
-  LogOut,
 } from "lucide-react";
 import Logo from "@/components/Logo";
+import LogoutButton from "@/components/LogoutButton";
 
 const Sidebar = () => {
   return (
@@ -121,17 +121,7 @@ const Sidebar = () => {
               </li>
             </ul>
           </div>
-          <StandardMenu
-            title="Keluar"
-            icon={(isActive) => (
-              <LogOut
-                className={`w-6 h-6 text-gray-400 transition duration-75  ${
-                  isActive ? "text-white" : "group-hover:text-gray-900"
-                }`}
-              />
-            )}
-            link="/logout"
-          />
+          <LogoutButton />
         </div>
       </aside>
     </>
