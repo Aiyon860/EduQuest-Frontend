@@ -103,7 +103,7 @@ const Sidebar = () => {
                       }`}
                     />
                   )}
-                  link="/penghargaan"
+                  link="/achievements"
                 />
               </li>
               <li>

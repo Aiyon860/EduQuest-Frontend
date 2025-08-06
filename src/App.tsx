@@ -16,6 +16,7 @@ import ReviewSoal from "@/pages/ReviewSoal/ReviewSoal";
 import ListSoal from "@/pages/HistoryPengerjaan/ListSoal";
 import MisiHarian from "@/pages/MisiHarian/MisiHarian";
 import Kelas from "@/pages/Kelas/Kelas";
+import Profile from "@/pages/Profile/Profile";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import PublicRoute from "@/components/PublicRoute";
 import PeringkatGlobal from '@/pages/PapanPeringkat/PeringkatGlobal/PeringkatGlobal'
@@ -25,7 +26,7 @@ import PeringkatGlobal from '@/pages/PapanPeringkat/PeringkatGlobal/PeringkatGlo
 // import Penghargaan from '@/pages/Penghargaan/Penghargaan'
 // import ImportFileExcel from '@/components/ImportFileExcel'
 // import ImportFilePdf from '@/components/ImportFilePdf'
-// import KlanOrangLain from '@/pages/PapanPeringkat/KlanOrangLain/KlanOrangLain'
+// import KlanOrangLain from '@/pages/PapanPeringkat/KlanOrangLain/KlanOrangLain'f
 
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
           <Route path="quests" element={<MisiHarian />} />
           <Route path="leaderboard/global" element={<PeringkatGlobal />} />
           <Route path="kelas" element={<Kelas />} />
+          <Route path="profile" element={<Profile />} />
         </Route>
       {/* Core app layout
       <Route path="/*" element={<CoreAppLayout />}>
@@ -79,7 +81,6 @@ function App() {
         <Route path="clans" element={<KlanSaya />} />
         <Route path="clans/oranglain" element={<KlanOrangLain />} />
         <Route path="kelas" element={<Kelas />} />
-        <Route path="profil" element={<Profile />} />
         <Route path="penghargaan" element={<Penghargaan />} />
         <Route path="importexcel" element={<ImportFileExcel />} />
         <Route path="importpdf" element={<ImportFilePdf />} />
