@@ -1,4 +1,4 @@
-import girlStudyingImage from "@/assets/hero.png";
+import girlStudyingImage from "@/assets/hero.webp";
 import * as motion from "motion/react-client"
 
 const HeroImage = () => {

@@ -1,10 +1,10 @@
 import TestimonyCard from "@/pages/LandingPage/Testimony/components/TestimonyCard";
-import testimoniImage1 from "@/assets/testimoni1.png";
-import testimoniImage2 from "@/assets/testimoni2.png";
-import testimoniImage3 from "@/assets/testimoni3.png";
-import testimoniImage4 from "@/assets/testimoni4.png";
-import testimoniImage5 from "@/assets/testimoni5.png";
-import testimoniImage6 from "@/assets/testimoni6.png";
+import testimoniImage1 from "@/assets/testimoni1.webp";
+import testimoniImage2 from "@/assets/testimoni2.webp";
+import testimoniImage3 from "@/assets/testimoni3.webp";
+import testimoniImage4 from "@/assets/testimoni4.webp";
+import testimoniImage5 from "@/assets/testimoni5.webp";
+import testimoniImage6 from "@/assets/testimoni6.webp";
 import TestimonyHeading from "@/pages/LandingPage/Testimony/components/TestimonyHeading";
 
 const Testimony = () => {

@@ -1,5 +1,5 @@
-import GambarMasuk from "@/assets/vector.png";
-import Logo from "@/assets/eduquest.png";
+import GambarMasuk from "@/assets/vector.webp";
+import Logo from "@/assets/eduquest.webp";
 
 const SignUp = () => {
   return (

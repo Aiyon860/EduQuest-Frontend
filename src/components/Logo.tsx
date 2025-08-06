@@ -1,4 +1,4 @@
-import EduQuestLogo from "@/assets/eduquest-logo.png";
+import EduQuestLogo from "@/assets/eduquest-logo.webp";
 
 const Logo = () => {
   return (
