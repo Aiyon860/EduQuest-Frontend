@@ -15,8 +15,11 @@ import SoalIsian from '@/pages/SoalIsian/SoalIsian'
 import ReviewSoal from '@/pages/ReviewSoal/ReviewSoal'
 import ListSoal from '@/pages/HistoryPengerjaan/ListSoal'
 import MisiHarian from '@/pages/MisiHarian/MisiHarian'
-import PeringkatGlobal from '@/pages/PapanPeringkat/PeringkatGlobal'
+import PeringkatGlobal from '@/pages/PapanPeringkat/PeringkatGlobal/PeringkatGlobal'
+import PeringkatAntarKlan from '@/pages/PapanPeringkat/PeringkatAntarKlan/PeringkatAntarKlan'
+import KlanSaya from '@/pages/Klan/KlanSaya'
 import Kelas from '@/pages/Kelas/Kelas'
+import KlanOrangLain from '@/pages/PapanPeringkat/KlanOrangLain/KlanOrangLain'
 
 function App() {
   return (
@@ -42,6 +45,9 @@ function App() {
         <Route path="histories" element={<ListSoal />} />
         <Route path="quests" element={<MisiHarian />} />
         <Route path="leaderboard/global" element={<PeringkatGlobal />} />
+        <Route path="leaderboard/clans" element={<PeringkatAntarKlan />} />
+        <Route path="clans" element={<KlanSaya />} />
+        <Route path="clans/oranglain" element={<KlanOrangLain />} />
         <Route path="kelas" element={<Kelas />} />
       </Route>
     </Routes>
