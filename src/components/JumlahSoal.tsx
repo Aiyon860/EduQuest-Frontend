@@ -2,7 +2,6 @@ const JumlahSoal = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 p-4">
-
       <div className="mb-6">
         <div className="flex items-center text-purple-600 text-sm font-medium">
           <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
