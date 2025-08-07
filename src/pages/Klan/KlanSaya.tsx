@@ -1,4 +1,5 @@
 import { Shield, User } from "lucide-react";
+import { useState } from "react";
 const generateClanMembers = () => [
   { nama: "Agus Hat", xp: 69000, misi: "Misi A" },
   { nama: "Dimas Laptop", xp: 69000, misi: "Misi A" },
@@ -12,13 +13,14 @@ const generateClanMembers = () => [
 
 const KlanSaya = () => {
   const anggota = generateClanMembers();
+  const [currentPage, setCurrentPage] = useState(1);
 
   return (
-    <section className="w-full flex flex-col items-center justify-center">
-      <div className="px-4 py-8 max-w-screen-xl mx-auto w-3xl">
-        <h2 className="text-3xl font-bold mb-2">NGAWI SITE KLAN</h2>
+    <section className="sm:ml-64">
+      <div className="px-4 py-8 max-w-screen-xl mx-auto w-xs sm:w-full text-left">
+        <h2 className="text-3xl font-bold mb-8">NGAWI SITE KLAN</h2>
 
-        <div className="bg-white border rounded-lg shadow p-4 mb-6 w-full max-w-md">
+        <div className="bg-white rounded-lg shadow p-4 mb-6 w-full max-w-md">
           <p>Peringkat: <strong>#2</strong> dari 24 Clan</p>
           <p>Anggota: <strong>{anggota.length} orang</strong></p>
           <p>Total XP Clan: <strong>74.300 XP</strong></p>
@@ -43,7 +45,7 @@ const KlanSaya = () => {
                 <tr key={index} className="bg-white border-b border-gray-200">
                   <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap flex items-center gap-2">
                     <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
-                      <User className="w-5 h-5 text-gray-600" />    
+                      <User className="w-5 h-5 text-gray-600" />
                     </div>
                     {item.nama}
                   </td>
@@ -54,6 +56,24 @@ const KlanSaya = () => {
             </tbody>
           </table>
         </div>
+      </div>
+      <div className="flex justify-center gap-2 items-center text-sm m-5 sm:justify-end">
+        <button
+          className="px-4 py-1.5 rounded-md bg-blue-700 text-white flex items-center gap-1 disabled:opacity-50"
+          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+          disabled={currentPage === 1}
+        >
+          ⬅ Previous
+        </button>
+        <span className="px-3 py-1.5 rounded bg-white border">1</span>
+        <span className="text-gray-500">...</span>
+        <span className="px-3 py-1.5 rounded bg-white border">5</span>
+        <button
+          className="px-4 py-1.5 rounded-md bg-blue-700 text-white flex items-center gap-1"
+          onClick={() => setCurrentPage((prev) => prev + 1)}
+        >
+          Next ➡
+        </button>
       </div>
     </section>
   );

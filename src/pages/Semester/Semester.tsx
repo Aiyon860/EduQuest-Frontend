@@ -7,8 +7,8 @@ const dataSemester = [
 
 const Semester = () => {
     return (
-        <section className="w-full flex flex-col items-center justify-center">
-            <div className="px-4 py-8 max-w-screen-xl mx-auto">
+        <section className="sm:ml-64">
+            <div className="px-4 py-8 max-w-screen-xl mx-auto w-full">
                 <div className="w-full flex flex-col items-center justify-between mb-10 sm:flex-row">
                     <h2 className="text-2xl tracking-tight font-bold text-gray-900">Semester</h2>
                     <button className="m-3 bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold px-4 py-2 rounded-lg">

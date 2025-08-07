@@ -65,14 +65,14 @@ const PeringkatAntarKlan = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   return (
-    <section className="w-full flex flex-col items-center justify-center">
-      <div className="px-4 py-8 max-w-screen-xl mx-auto w-2xl">
+    <section className="sm:ml-64">
+      <div className="px-4 py-8 max-w-screen-xl mx-auto w-xs sm:w-full">
         <h2 className="text-2xl font-bold text-left text-gray-900 mb-6">
           Peringkat Antar Klan
         </h2>
 
-        <div className="relative overflow-x-auto bg-white rounded-lg shadow">
-          <table className="w-full text-sm text-left text-gray-500">
+        <div className="relative overflow-x-auto bg-white rounded-sm shadow">
+          <table className="w-full text-sm text-center text-gray-500">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50">
               <tr>
                 <th scope="col" className="px-6 py-3">
@@ -111,7 +111,7 @@ const PeringkatAntarKlan = () => {
         </div>
 
         {/* Pagination */}
-        <div className="flex justify-end mt-4 gap-2 items-center text-sm">
+        <div className="flex justify-center mt-4 gap-2 items-center text-sm sm:justify-end">
           <button
             className="px-4 py-1.5 rounded-md bg-blue-700 text-white flex items-center gap-1 disabled:opacity-50"
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}

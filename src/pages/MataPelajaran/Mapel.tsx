@@ -11,7 +11,7 @@ const dataMapel = [
 
 const Mapel = () => {
     return (
-        <section className="w-full flex flex-col items-center justify-center">
+        <section className="sm:ml-64">
             <div className="px-4 py-8 max-w-screen-xl mx-auto">
                 <div className="w-full flex flex-col items-center justify-between mb-10 sm:flex-row">
                     <h2 className="text-2xl tracking-tight font-bold text-gray-900">Mata Pelajaran</h2>
@@ -19,11 +19,11 @@ const Mapel = () => {
                         Pilih File Jadwal
                     </button>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 place-items-center">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 place-items-center">
                     {dataMapel.map((mapel, index) => (
                         <div
                             key={index}
-                            className="w-[200px] h-[300px] bg-cover bg-center border border-gray-200 rounded-lg shadow-md flex flex-col justify-between"
+                            className="w-[300px] h-[300px] bg-cover bg-center border border-gray-200 rounded-lg shadow-md flex flex-col justify-between"
                             style={{
                                 backgroundImage: `url(${Foto})`,
                             }}
