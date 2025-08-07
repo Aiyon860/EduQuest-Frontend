@@ -24,11 +24,12 @@ const PeringkatGlobal = () => {
     const [selectedJenjang, setSelectedJenjang] = useState("");
     const [selectedKelas, setSelectedKelas] = useState("");
     const [searchTerm, setSearchTerm] = useState("");
+    const [currentPage, setCurrentPage] = useState(1);
 
     return (
-        <section className="w-full flex flex-col items-center justify-center">
-            
-            <div className="px-4 py-8 max-w-screen-xl mx-auto w-2xl">
+        <section className="sm:ml-64">
+
+            <div className="px-4 py-8 max-w-screen-xl mx-auto w-xs sm:w-full">
                 <div className="grid grid-cols-1 gap-4 mb-6">
                     <h2 className="text-2xl font-bold text-left text-gray-900">Papan Peringkat Global</h2>
                     <div className="grid grid-cols-[auto_auto_1fr] md:grid-cols-[auto_auto_1fr] items-center gap-2 md:gap-4 mb-6 w-full">
@@ -106,6 +107,24 @@ const PeringkatGlobal = () => {
                         </tbody>
                     </table>
                 </div>
+            </div>
+            <div className="flex justify-center gap-2 items-center text-sm m-5 sm:justify-end">
+                <button
+                    className="px-4 py-1.5 rounded-md bg-blue-700 text-white flex items-center gap-1 disabled:opacity-50"
+                    onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                    disabled={currentPage === 1}
+                >
+                    ⬅ Previous
+                </button>
+                <span className="px-3 py-1.5 rounded bg-white border">1</span>
+                <span className="text-gray-500">...</span>
+                <span className="px-3 py-1.5 rounded bg-white border">5</span>
+                <button
+                    className="px-4 py-1.5 rounded-md bg-blue-700 text-white flex items-center gap-1"
+                    onClick={() => setCurrentPage((prev) => prev + 1)}
+                >
+                    Next ➡
+                </button>
             </div>
         </section>
     );

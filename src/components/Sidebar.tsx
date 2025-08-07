@@ -43,7 +43,7 @@ const Sidebar = () => {
                       className={`w-6 h-6 text-gray-400 transition duration-75 ${
                         isActive ? "text-white" : "group-hover:text-gray-900"
                       }`}
-                    />
+                    />  
                   )}
                   link="/dashboard"
                 />

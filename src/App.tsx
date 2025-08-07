@@ -1,7 +1,7 @@
-import "./App.css";
-import { Routes, Route } from "react-router";
-import CoreAppLayout from "@/layouts/CoreApp";
-import LandingPageLayout from "@/layouts/LandingPage";
+import './App.css'
+import { Routes, Route } from 'react-router'
+import CoreAppLayout from '@/layouts/CoreApp'
+import LandingPageLayout from '@/layouts/LandingPage'
 
 import Dashboard from "@/pages/Dashboard/Dashboard";
 import SignUp from "@/pages/SignUp/SignUp";
@@ -23,6 +23,8 @@ import KlanSaya from "@/pages/Klan/KlanSaya";
 import KlanOrangLain from "@/pages/PapanPeringkat/KlanOrangLain/KlanOrangLain";
 import Semester from "@/pages/Semester/Semester";
 import Penghargaan from "./pages/Penghargaan/Penghargaan";
+// import ImportFileExcel from './components/ImportFileExcel';
+// import ImportFilePdf from './components/ImportFilePdf';
 // import PeringkatAntarKlan from '@/pages/PapanPeringkat/PeringkatAntarKlan/PeringkatAntarKlan'
 // import KlanSaya from '@/pages/Klan/KlanSaya'
 // import Profile from '@/pages/Profile/Profil'
@@ -34,10 +36,10 @@ import Penghargaan from "./pages/Penghargaan/Penghargaan";
 function App() {
   return (
     <Routes>
-      {/* Landing page (still accessible to all) */}
+      {/* Landing page layout */}
       <Route path="/" element={<LandingPageLayout />} />
 
-      {/* Public routes - only accessible if not logged in */}
+      {/* Public routes */}
       <Route element={<PublicRoute />}>
         <Route path="signup" element={<SignUp />} />
         <Route path="login" element={<Login />} />
@@ -78,30 +80,9 @@ function App() {
           <Route path="leaderboard/clans" element={<KlanOrangLain />} />
           <Route path="achievements" element={<Penghargaan />} />
         </Route>
-        {/* Core app layout
-      <Route path="/*" element={<CoreAppLayout />}>
-        <Route path="dashboard" element={<Dashboard />} />
-        <Route path="mapel" element={<Mapel />} />
-        <Route path="semester" element={<Semester />} />
-        <Route path="materials/:level" element={<ListMateri />} />
-        <Route path="materials/:level/:grade" element={<ListMateri />} />
-        <Route path="materials/:level/:grade/:semester" element={<ListMateri />} />
-        <Route path="materials/detail/:id" element={<DetailMateri />} />
-        <Route path="soal/pilgan" element={<SoalPilgan />} />
-        <Route path="soal/isian" element={<SoalIsian />} />
-        <Route path="soal/review" element={<ReviewSoal />} />
-        <Route path="histories" element={<ListSoal />} />
-        <Route path="quests" element={<MisiHarian />} />
-        <Route path="leaderboard/global" element={<PeringkatGlobal />} />
-        <Route path="leaderboard/clans" element={<PeringkatAntarKlan />} />
-        <Route path="kelas" element={<Kelas />} />
-        <Route path="penghargaan" element={<Penghargaan />} />
-        <Route path="importexcel" element={<ImportFileExcel />} />
-        <Route path="importpdf" element={<ImportFilePdf />} />
-      </Route> */}
       </Route>
     </Routes>
-  );
+  )
 }
 
-export default App;
+export default App

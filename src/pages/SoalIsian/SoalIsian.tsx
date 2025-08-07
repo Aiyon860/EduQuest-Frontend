@@ -59,8 +59,8 @@ const LatihanSoal: React.FC = () => {
     };
 
     return (
-        <div className="flex justify-center sm:ml-64">
-            <section className="w-full px-4 py-10 max-w-4xl">
+        <div className="sm:ml-64">
+            <section className="w-full px-4 py-10 max-w-screen-xl">
                 <div className="mb-6">
                     <h2 className="text-2xl font-extrabold text-gray-900">
                         Latihan Soal <span className="font-normal">| IPA</span>
