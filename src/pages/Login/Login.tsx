@@ -70,12 +70,14 @@ const Login = () => {
           />
         </div>
 
-        {/* Right Form */}
+      {/* Right Form */}
         <div className="p-8 md:p-12 flex flex-col justify-center gap-4">
           {/* Logo & Heading */}
           <div className="mb-6 text-left">
-            <div className="w-12 h-12 mb-2">
-              <img src={Logo} alt="EduQuest Logo" />
+            <div className="w-12 h-12 mb-2 hover:cursor-pointer">
+              <Link to="/">
+                <img src={Logo} alt="EduQuest Logo" />
+              </Link>
             </div>
             <h2 className="mt-10 text-2xl font-bold text-gray-800">
               Selamat Datang di EduQuest!

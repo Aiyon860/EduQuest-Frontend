@@ -19,7 +19,7 @@ const BadgeGrid = () => {
             <Award size={20} color="white" />
           </div>
 
-          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 hidden group-hover:flex flex-col items-center bg-white text-gray-900 text-sm rounded-xl p-4 shadow-xl w-56 z-20 transition-all duration-300">
+          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 hidden group-hover:flex flex-col items-center bg-white text-gray-900 text-sm rounded-xl p-4 shadow-xl w-56 z-50 transition-all duration-300">
             <div className="text-orange-500 text-3xl mb-2">
               <Award size={32} />
             </div>

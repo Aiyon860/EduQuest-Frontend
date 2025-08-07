@@ -1,10 +1,11 @@
 import { CircleArrowRight } from "lucide-react";
 import * as motion from "motion/react-client";
+import { Link } from "react-router";
 
 const CTA = () => {
   return (
-    <a
-      href="#"
+    <Link
+      to="/login"
       className="flex items-center justify-center gap-2 px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-xl bg-[#FF6D00] hover:brightness-90 focus:ring-4 focus:ring-[#FF6D00] transition-all cursor-pointer"
     >
       <span>Mulai perkuat ingatanmu!</span>
@@ -26,7 +27,7 @@ const CTA = () => {
       >
         <CircleArrowRight className="w-6 h-6"/>
       </motion.div>
-    </a>
+    </Link>
   );
 };
 

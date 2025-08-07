@@ -12,8 +12,14 @@ import {
 } from "lucide-react";
 import Logo from "@/components/Logo";
 import LogoutButton from "@/components/LogoutButton";
+import { initFlowbite } from "flowbite";
+import { useEffect } from "react";
 
 const Sidebar = () => {
+  useEffect(() => {
+    initFlowbite();
+  }, []);
+
   return (
     <>
       <SidebarToggle />
@@ -49,9 +55,9 @@ const Sidebar = () => {
                     <BookText className="w-6 h-6 text-gray-400 transition duration-75  group-hover:text-gray-900 " />
                   }
                   items={[
-                    { name: "SD", link: "/sd" },
-                    { name: "SMP", link: "/smp" },
-                    { name: "SMA", link: "/sma" },
+                    { name: "SD", link: "/jenjang/sd" },
+                    { name: "SMP", link: "/jenjang/smp" },
+                    { name: "SMA", link: "/jenjang/sma" },
                   ]}
                 />
               </li>
