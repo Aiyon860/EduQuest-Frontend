@@ -23,6 +23,8 @@ import KlanSaya from "@/pages/Klan/KlanSaya";
 import KlanOrangLain from "@/pages/PapanPeringkat/KlanOrangLain/KlanOrangLain";
 import Semester from "@/pages/Semester/Semester";
 import Penghargaan from "./pages/Penghargaan/Penghargaan";
+import PeringkatAntarKlan from './pages/PapanPeringkat/PeringkatAntarKlan/PeringkatAntarKlan';
+import BuatKlan from "@/pages/Klan/BuatKlan";
 // import ImportFileExcel from './components/ImportFileExcel';
 // import ImportFilePdf from './components/ImportFilePdf';
 // import PeringkatAntarKlan from '@/pages/PapanPeringkat/PeringkatAntarKlan/PeringkatAntarKlan'
@@ -77,8 +79,10 @@ function App() {
           <Route path="kelas" element={<Kelas />} />
           <Route path="profile" element={<Profile />} />
           <Route path="clans" element={<KlanSaya />} />
-          <Route path="leaderboard/clans" element={<KlanOrangLain />} />
+          <Route path="leaderboard/clans" element={<PeringkatAntarKlan />} />
+          <Route path="clans/antarklan" element={<KlanOrangLain />} />
           <Route path="achievements" element={<Penghargaan />} />
+          <Route path="clans/buat" element={<BuatKlan />} />
         </Route>
       </Route>
     </Routes>

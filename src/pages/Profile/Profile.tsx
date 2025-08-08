@@ -175,7 +175,7 @@ const Profile = () => {
                   <option value="">Pilih Jenjang</option>
                   {jenjangList.map((j) => (
                     <option key={String(j.id_jenjang)} value={String(j.id_jenjang)}>
-                      {j.nama_jenjang}
+                      {j.id_jenjang}
                     </option>
                   ))}
                 </select>

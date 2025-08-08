@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import FaceDetect from "../FaceDetect/FaceDetect";
 
 type JawabanKey = "pertama" | "kedua" | "ketiga" | "keempat" | "kelima";
 
@@ -79,9 +80,8 @@ const LatihanSoal: React.FC = () => {
                             draggable={!!jawaban.pertama}
                             onDragStart={() => handleDragFromJawaban("pertama")}
                             onClick={() => handleClickJawaban("pertama")}
-                            className={`border-b-2 border-gray-400 px-2 inline-block min-w-[80px] cursor-move ${
-                                jawaban.pertama ? "bg-orange-400 text-white font-semibold rounded" : ""
-                            }`}
+                            className={`border-b-2 border-gray-400 px-2 inline-block min-w-[80px] cursor-move ${jawaban.pertama ? "bg-orange-400 text-white font-semibold rounded" : ""
+                                }`}
                         >
                             {jawaban.pertama || "______"}
                         </span>
@@ -92,9 +92,8 @@ const LatihanSoal: React.FC = () => {
                             draggable={!!jawaban.kedua}
                             onDragStart={() => handleDragFromJawaban("kedua")}
                             onClick={() => handleClickJawaban("kedua")}
-                            className={`border-b-2 border-gray-400 px-2 inline-block min-w-[80px] cursor-move ${
-                                jawaban.kedua ? "bg-orange-400 text-white font-semibold rounded" : ""
-                            }`}
+                            className={`border-b-2 border-gray-400 px-2 inline-block min-w-[80px] cursor-move ${jawaban.kedua ? "bg-orange-400 text-white font-semibold rounded" : ""
+                                }`}
                         >
                             {jawaban.kedua || "______"}
                         </span> akibat panas matahari. Ketika kita merasa demam, kita bisa mengetahui suhu tubuh menggunakan alat yang disebut{" "}
@@ -104,9 +103,8 @@ const LatihanSoal: React.FC = () => {
                             draggable={!!jawaban.ketiga}
                             onDragStart={() => handleDragFromJawaban("ketiga")}
                             onClick={() => handleClickJawaban("ketiga")}
-                            className={`border-b-2 border-gray-400 px-2 inline-block min-w-[80px] cursor-move ${
-                                jawaban.ketiga ? "bg-orange-400 text-white font-semibold rounded" : ""
-                            }`}
+                            className={`border-b-2 border-gray-400 px-2 inline-block min-w-[80px] cursor-move ${jawaban.ketiga ? "bg-orange-400 text-white font-semibold rounded" : ""
+                                }`}
                         >
                             {jawaban.ketiga || "______"}
                         </span>. Di sekolah, kamu mungkin pernah bermain dengan benda yang dapat menarik paku atau jarum, benda itu disebut{" "}
@@ -116,9 +114,8 @@ const LatihanSoal: React.FC = () => {
                             draggable={!!jawaban.keempat}
                             onDragStart={() => handleDragFromJawaban("keempat")}
                             onClick={() => handleClickJawaban("keempat")}
-                            className={`border-b-2 border-gray-400 px-2 inline-block min-w-[80px] cursor-move ${
-                                jawaban.keempat ? "bg-orange-400 text-white font-semibold rounded" : ""
-                            }`}
+                            className={`border-b-2 border-gray-400 px-2 inline-block min-w-[80px] cursor-move ${jawaban.keempat ? "bg-orange-400 text-white font-semibold rounded" : ""
+                                }`}
                         >
                             {jawaban.keempat || "______"}
                         </span>. Selain itu, tumbuhan juga memiliki bagian yang menyerap air dan mineral dari dalam tanah agar bisa tumbuh, bagian itu disebut{" "}
@@ -128,9 +125,8 @@ const LatihanSoal: React.FC = () => {
                             draggable={!!jawaban.kelima}
                             onDragStart={() => handleDragFromJawaban("kelima")}
                             onClick={() => handleClickJawaban("kelima")}
-                            className={`border-b-2 border-gray-400 px-2 inline-block min-w-[80px] cursor-move ${
-                                jawaban.kelima ? "bg-orange-400 text-white font-semibold rounded" : ""
-                            }`}
+                            className={`border-b-2 border-gray-400 px-2 inline-block min-w-[80px] cursor-move ${jawaban.kelima ? "bg-orange-400 text-white font-semibold rounded" : ""
+                                }`}
                         >
                             {jawaban.kelima || "______"}
                         </span>.
@@ -164,6 +160,9 @@ const LatihanSoal: React.FC = () => {
                     </button>
                 </div>
             </section>
+            <div className="flex justify-center">
+                <FaceDetect />
+            </div>
         </div>
     );
 };
