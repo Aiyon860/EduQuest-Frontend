@@ -22,7 +22,8 @@ import PeringkatGlobal from "@/pages/PapanPeringkat/PeringkatGlobal/PeringkatGlo
 import KlanSaya from "@/pages/Klan/KlanSaya";
 import KlanOrangLain from "@/pages/PapanPeringkat/KlanOrangLain/KlanOrangLain";
 import Semester from "@/pages/Semester/Semester";
-import Penghargaan from "./pages/Penghargaan/Penghargaan";
+import Penghargaan from "@/pages/Penghargaan/Penghargaan";
+import HistoryPengerjaan from "@/pages/HistoryPengerjaan/ListSoal";
 // import ImportFileExcel from './components/ImportFileExcel';
 // import ImportFilePdf from './components/ImportFilePdf';
 // import PeringkatAntarKlan from '@/pages/PapanPeringkat/PeringkatAntarKlan/PeringkatAntarKlan'
@@ -79,6 +80,7 @@ function App() {
           <Route path="clans" element={<KlanSaya />} />
           <Route path="leaderboard/clans" element={<KlanOrangLain />} />
           <Route path="achievements" element={<Penghargaan />} />
+          <Route path="history" element={<HistoryPengerjaan />} />
         </Route>
       </Route>
     </Routes>

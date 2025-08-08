@@ -49,7 +49,7 @@ const SignUp = () => {
       }
 
       setSuccessMessage("Registrasi berhasil! Silakan login.");
-      navigate("/login");
+      navigate("/login", { replace: true });
       reset();
     } catch (error: unknown) {
       if (error instanceof Error) {
