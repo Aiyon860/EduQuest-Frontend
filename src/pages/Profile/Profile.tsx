@@ -3,18 +3,18 @@ import { Award } from "lucide-react";
 import type { UserProfile } from "@/types/user";
 
 interface Jenjang {
-  id_jenjang: bigint;
+  id_jenjang: string;
   nama_jenjang: string;
 }
 
 interface Kelas {
-  id_kelas: bigint;
-  posisi_kelas: string;
+  id_kelas: number;
+  posisi_kelas: number;
 }
 
 interface Semester {
   id_semester: bigint;
-  posisi_semester: string;
+  posisi_semester: number;
 }
 
 const Profile = () => {
@@ -26,22 +26,46 @@ const Profile = () => {
   const [kelasList, setKelasList] = useState<Kelas[]>([]);
   const [semesterList, setSemesterList] = useState<Semester[]>([]);
 
-  // Fetch dropdown options
+  // Fetch jenjang
   useEffect(() => {
-    const fetchOptions = async () => {
+    const fetchJenjang = async () => {
       try {
-        const jenjangRes = await fetch("http://localhost:3000/api/jenjang");
-        const jenjangText = await jenjangRes.text();
-        console.log("Response text:", jenjangText); // Ini akan kelihatan apakah HTML atau JSON
-
-        const jenjangJson = JSON.parse(jenjangText);
-        if (jenjangJson.success) setJenjangList(jenjangJson.data);
+        const res = await fetch("http://localhost:3000/api/jenjang");
+        const json = await res.json();
+        if (json.success) setJenjangList(json.data);
       } catch (err) {
-        console.error("Error jenjang:", err);
+        console.error("Gagal memuat jenjang:", err);
       }
     };
+    fetchJenjang();
+  }, []);
 
-    fetchOptions();
+  // Fetch kelas
+  useEffect(() => {
+    const fetchKelas = async () => {
+      try {
+        const res = await fetch("http://localhost:3000/api/kelas");
+        const json = await res.json();
+        if (json.success) setKelasList(json.data);
+      } catch (err) {
+        console.error("Gagal memuat kelas:", err);
+      }
+    };
+    fetchKelas();
+  }, []);
+
+  // Fetch semester
+  useEffect(() => {
+    const fetchSemester = async () => {
+      try {
+        const res = await fetch("http://localhost:3000/api/semester");
+        const json = await res.json();
+        if (json.success) setSemesterList(json.data);
+      } catch (err) {
+        console.error("Gagal memuat semester:", err);
+      }
+    };
+    fetchSemester();
   }, []);
 
   // Fetch profile
@@ -119,7 +143,6 @@ const Profile = () => {
   return (
     <section>
       <div className="p-5 sm:ml-64 mb-16">
-        {/* Tombol Edit */}
         <div className="flex justify-end w-full">
           <button
             onClick={() => setIsEditing(true)}
@@ -133,7 +156,6 @@ const Profile = () => {
           </button>
         </div>
 
-        {/* Header Profil */}
         <div className="flex flex-col items-center w-full py-2 px-5 md:flex-row border-b border-black mb-4">
           <div className="m-5 w-20 h-20 rounded-full bg-[#023E8A] flex items-center justify-center text-white text-2xl font-bold">
             {profile.nama_depan?.[0] || "?"}
@@ -147,7 +169,6 @@ const Profile = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Kolom Kiri */}
           <div className="flex flex-col gap-2 text-left">
             <InputField id="nama-depan" label="Nama Depan" value={profile.nama_depan} isEditing={isEditing} />
             <InputField id="email" label="Email" value={profile.email} isEditing={false} />
@@ -156,14 +177,11 @@ const Profile = () => {
             <InputField id="lahir" label="Lahir" value={profile.tanggal_lahir || ""} isEditing={isEditing} />
           </div>
 
-          {/* Kolom Kanan */}
           <div className="flex flex-col gap-2 text-left">
             <InputField id="nama-belakang" label="Nama Belakang" value={profile.nama_belakang} isEditing={isEditing} />
             <InputField id="no-hp" label="Nomor Handphone" value={profile.no_telepon || ""} isEditing={isEditing} />
 
-            {/* Dropdowns */}
             <div className="flex gap-4 mb-5">
-              {/* Jenjang */}
               <div className="flex-1">
                 <label htmlFor="jenjang" className="block mb-2 text-sm font-medium text-gray-900">Jenjang</label>
                 <select
@@ -174,14 +192,13 @@ const Profile = () => {
                 >
                   <option value="">Pilih Jenjang</option>
                   {jenjangList.map((j) => (
-                    <option key={String(j.id_jenjang)} value={String(j.id_jenjang)}>
-                      {j.id_jenjang}
+                    <option key={j.id_jenjang} value={j.id_jenjang}>
+                      {j.nama_jenjang}
                     </option>
                   ))}
                 </select>
               </div>
 
-              {/* Kelas */}
               <div className="flex-1">
                 <label htmlFor="kelas" className="block mb-2 text-sm font-medium text-gray-900">Kelas</label>
                 <select
@@ -192,12 +209,13 @@ const Profile = () => {
                 >
                   <option value="">Pilih Kelas</option>
                   {kelasList.map((k) => (
-                    <option key={k.id_kelas} value={String(k.id_kelas)}>{k.posisi_kelas}</option>
+                    <option key={k.id_kelas} value={String(k.id_kelas)}>
+                      Kelas {k.posisi_kelas}
+                    </option>
                   ))}
                 </select>
               </div>
 
-              {/* Semester */}
               <div className="flex-1">
                 <label htmlFor="semester" className="block mb-2 text-sm font-medium text-gray-900">Semester</label>
                 <select
@@ -208,13 +226,14 @@ const Profile = () => {
                 >
                   <option value="">Pilih Semester</option>
                   {semesterList.map((s) => (
-                    <option key={s.id_semester} value={String(s.id_semester)}>{s.posisi_semester}</option>
+                    <option key={String(s.id_semester)} value={String(s.id_semester)}>
+                      Semester {s.posisi_semester}
+                    </option>
                   ))}
                 </select>
               </div>
             </div>
 
-            {/* Penghargaan */}
             <div>
               <label className="text-sm font-medium text-gray-900">Penghargaan</label>
               <div className="p-5 grid grid-cols-5 gap-2 mt-2 rounded-md w-full shadow-sm focus:shadow-md focus:ring-2 focus:ring-blue-400 focus:outline-none place-items-center">
@@ -284,4 +303,4 @@ const InputField = ({
   </div>
 );
 
-export default Profile;  
+export default Profile;

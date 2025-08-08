@@ -3,14 +3,44 @@ import AktivitasTerakhir from "./AktivitasTerakhir";
 import { Award } from "lucide-react";
 import ProgressBelajar from "./components/Progress";
 import RekomendasiMateri from "./components/Rekomendasi";
+import { useState, useEffect } from "react";
+
 
 const Dashboard = () => {
+  const [firstName, setFirstName] = useState("...");
+  const [lastName, setLastName] = useState("")
+  
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const token = sessionStorage.getItem("accessToken");
+        if (!token) throw new Error("Token tidak ditemukan");
+
+        const res = await fetch("http://localhost:3000/api/auth/me/full", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        const json = await res.json();
+        if (json.success) {
+          setFirstName(json.data.nama_depan || "");
+          setLastName(json.data.nama_belakang || "");
+        }
+      } catch (err) {
+        console.error("Gagal memuat data user:", err);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
   return (
     <>
       <section>
         <div className="p-5 sm:ml-64">
           <div className="pt-10 pb-10">
-            <h1 className="text-xl font-bold mb-2 text-left">Selamat Datang, John Doe</h1>
+            <h1 className="text-xl font-bold mb-2 text-left">Selamat Datang, {firstName} {lastName}</h1>
           </div>
 
           <div className="bg-white rounded-md shadow-md p-4 mb-6 border-l-8 border-orange-500">

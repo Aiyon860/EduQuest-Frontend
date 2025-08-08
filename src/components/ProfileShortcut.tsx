@@ -2,21 +2,11 @@ import { Spinner } from "flowbite-react";
 import { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router";
 
-interface ProfileShortcutProps {
-  firstName: string;
-  lastName: string;
-  className?: string;
-  img?: string;
-  alt: string;
-}
-
-const ProfileShortcut = ({
-  firstName,
-  lastName,
-  className,
-  img,
-  alt,
-}: ProfileShortcutProps) => {
+const ProfileShortcut = () => {
+  const [firstName, setFirstName] = useState("...");
+  const [lastName, setLastName] = useState("");
+  const [className, setClassName] = useState<string | undefined>();
+  const [img, setImg] = useState<string | null>(null); // Diisi jika ada foto_profil
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const maxRetries = 3;
@@ -33,17 +23,6 @@ const ProfileShortcut = ({
   ): Promise<boolean> => {
     return new Promise((resolve) => {
       const image = new Image();
-
-      image.onload = () => {
-        resolve(true);
-      };
-
-      image.onerror = () => {
-        console.warn(
-          `Image fetch attempt ${attempt} failed for URL: ${imageUrl}`
-        );
-        resolve(false);
-      };
 
       const timeoutId = setTimeout(() => {
         console.warn(
@@ -100,13 +79,42 @@ const ProfileShortcut = ({
   );
 
   useEffect(() => {
-    if (img && img.trim()) {
-      attemptImageLoad(img);
-    } else {
-      setIsImageLoaded(false);
-      setIsLoading(false);
-    }
-  }, [img, attemptImageLoad]);
+    const fetchUserData = async () => {
+      try {
+        const token = sessionStorage.getItem("accessToken");
+        if (!token) throw new Error("Token tidak ditemukan");
+
+        const response = await fetch("http://localhost:3000/api/auth/me/full", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          const data = result.data;
+          setFirstName(data.nama_depan || "");
+          setLastName(data.nama_belakang || "");
+          setClassName(`Kelas ${data.kelas?.posisi_kelas || "-"}`);
+
+          if (data.foto_profil) {
+            setImg(data.foto_profil);
+            attemptImageLoad(data.foto_profil);
+          } else {
+            setImg(null);
+            setIsImageLoaded(false);
+          }
+        } else {
+          console.error("Gagal mengambil data user");
+        }
+      } catch (error) {
+        console.error("Fetch error:", error);
+      }
+    };
+
+    fetchUserData();
+  }, [attemptImageLoad]);
 
   return (
     <Link
@@ -116,8 +124,8 @@ const ProfileShortcut = ({
       {isImageLoaded ? (
         <div className="rounded-lg bg-[#023E8A] w-10 h-10 flex items-center justify-center text-white overflow-hidden">
           <img
-            src={img}
-            alt={alt}
+            src={img as string}
+            alt={`${firstName} ${lastName}`}
             className="w-full h-full object-cover rounded-lg"
           />
         </div>
@@ -133,9 +141,7 @@ const ProfileShortcut = ({
         <div className="flex gap-2">
           <p className="font-medium">{`${firstName} ${lastName}`}</p>
         </div>
-        <p className="text-xs text-gray-500">
-          {className ?? "Tidak ada kelas"}
-        </p>
+        <p className="text-xs text-gray-500">{className ?? "Tidak ada kelas"}</p>
       </div>
     </Link>
   );
