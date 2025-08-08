@@ -1,4 +1,7 @@
 import Foto from "@/assets/vector.webp";
+import BreadcrumbNavigation, {
+  type LinkBreadcrumbType,
+} from "@/components/BreadcrumbNavigation";
 import { CircleArrowRight } from "lucide-react";
 import { Link, useLocation } from "react-router";
 
@@ -26,50 +29,83 @@ const Semester = () => {
     valid = false;
   }
 
+  const links: LinkBreadcrumbType[] = [
+    { label: jenjang.toUpperCase(), href: `/jenjang/${jenjang}` },
+    { label: `Kelas ${kelas}`, href: `/jenjang/${jenjang}` },
+    { label: "Semester" },
+  ];
+
   return (
     <section className="sm:ml-64 mb-12">
-      <div className="px-4 py-8 max-w-screen-xl mx-auto">
-        <div className="w-full flex flex-col items-center justify-between mb-10 sm:flex-row">
+      <div className="px-4 py-8 max-w-screen-xl mx-auto flex flex-col gap-4">
+        <BreadcrumbNavigation deepLevel={links.length} links={links} />
+        <div className="w-full flex items-center justify-between">
           <h2 className="text-2xl tracking-tight font-bold text-gray-900">
             Semester
           </h2>
-          <button className="m-3 bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold px-4 py-2 rounded-lg">
-            Pilih File Jadwal
-          </button>
         </div>
-        {valid ? (
+        {!valid && (
+          <p className="text-center text-gray-500">
+            Maaf, tidak ada semester pada kelas ini
+          </p>
+        )}
+        {valid && dataSemester.length === 0 && (
+          <p className="text-center text-gray-500">
+            Belum ada semester pada kelas ini
+          </p>
+        )}
+        {valid && dataSemester.length > 0 && (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 place-items-center">
             {dataSemester.map((semester, index) => (
-              <div
-                key={index}
-                className="w-full h-auto rounded-2xl shadow-lg flex flex-col justify-center p-4 bg-white gap-4"
-            >
-              <div className="w-full h-72 bg-white rounded-lg">
-                <img src={Foto} alt="gambar misi harian" className="object-cover w-full h-full rounded-lg" />
-              </div>
-              <div className="w-full h-2 bg-gray-200 rounded-full mt-2">
-                  <div
-                    className="h-2 bg-blue-600 rounded-full"
-                    style={{ width: `${semester.progress}%` }}
-                  ></div>
+                <div
+                  key={index}
+                  className="w-full h-auto rounded-2xl shadow-lg flex flex-col justify-center p-4 bg-white gap-4"
+                >
+                  <div className="w-full h-72 bg-white rounded-lg">
+                    <img
+                      src={Foto}
+                      alt="gambar misi harian"
+                      className="object-cover w-full h-full rounded-lg"
+                    />
+                  </div>
+                  <div className="w-full flex gap-4">
+                    <div
+                      className={`w-full h-2 ${
+                        semester.progress < 25
+                          ? "bg-[#FFD7D7]"
+                          : semester.progress < 50
+                          ? "bg-[#FFF5CC]"
+                          : "bg-[#D1FFDB]"
+                      } rounded-full mt-2`}
+                    >
+                      <div
+                        className={`h-2 ${
+                          semester.progress < 25
+                            ? "bg-[#FF4A4A]"
+                            : semester.progress < 50
+                            ? "bg-[#FFB200]"
+                            : "bg-[#13C525]"
+                        } rounded-full`}
+                        style={{ width: `${semester.progress}%` }}
+                      ></div>
+                    </div>
+                    <span className="text-sm">{semester.progress}%</span>
+                  </div>
+                  <h5 className="text-lg font-bold text-gray-800">
+                    {semester.nama}
+                  </h5>
+                  <Link
+                    to={`${pathname.replace(/\/$/, "")}/semester/${
+                      semester.link
+                    }`}
+                    className="w-full mt-1 px-3 py-2 text-sm text-center font-medium text-white bg-[#FF6D00] rounded-lg hover:brightness-90 flex items-center justify-center gap-2 transition-all"
+                  >
+                    <span>Pilih Semester</span>
+                    <CircleArrowRight className="w-4 h-4" />
+                  </Link>
                 </div>
-                <h5 className="text-lg font-bold text-gray-800">
-                  {semester.nama}
-                </h5>
-              <Link
-                to={`${pathname.replace(/\/$/, "")}/semester/${semester.link}`}
-                className="w-full mt-1 px-3 py-2 text-sm text-center font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 flex items-center justify-center gap-2 transition-colors"
-              >
-                <span>Pilih Semester</span>
-                <CircleArrowRight className="w-4 h-4"/>
-              </Link>
-            </div>
-          ))}
+              ))}
           </div>
-        ) : (
-          <p className="text-center text-gray-500">
-            Maaf, kelas tidak ditemukan
-          </p>
         )}
       </div>
     </section>
