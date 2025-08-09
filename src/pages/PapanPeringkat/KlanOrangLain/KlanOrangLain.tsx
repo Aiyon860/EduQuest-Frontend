@@ -1,59 +1,132 @@
 import { useEffect, useState } from "react";
-import { User } from "lucide-react"; // pastikan kamu sudah menginstall lucide-react
+import { User } from "lucide-react";
 
-const dummyAnggota = [
-  {
-    nama: "Agus Hat",
-    xp: 69000,
-    misi: "Misi A",
-  },
-  {
-    nama: "Dimas Laptop",
-    xp: 69000,
-    misi: "Misi A",
-  },
-  {
-    nama: "Riko Phone",
-    xp: 69000,
-    misi: "Misi A",
-  },
-  {
-    nama: "Jamal Mouse",
-    xp: 69000,
-    misi: "Misi A",
-  },
-  {
-    nama: "Budi Clock",
-    xp: 69000,
-    misi: "Misi A",
-  },
-  {
-    nama: "Deddy T-shirt",
-    xp: 69000,
-    misi: "Misi A",
-  },
-  {
-    nama: "Owi Monitor",
-    xp: 69000,
-    misi: "Misi A",
-  },
-  {
-    nama: "Owo Keyboard Ngawi",
-    xp: 69000,
-    misi: "Misi A",
-  },
-];
+interface AnggotaKlan {
+  id_siswa: string;
+  nama_depan: string;
+  nama_belakang: string;
+  poin_total: number;
+}
+
+interface Klan {
+  id_klan: number;
+  nama_klan: string;
+  siswa: AnggotaKlan[];
+}
+
+interface ApiResponse<T> {
+  success: boolean;
+  message: string;
+  data: T;
+}
+
+interface AnggotaTabel {
+  nama: string;
+  xp: number;
+  misi: string;
+}
 
 const KlanOrangLain = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [namaKlan, setNamaKlan] = useState("Nama Klan");
-  const [anggota, setAnggota] = useState(dummyAnggota);
+  const [namaKlan, setNamaKlan] = useState("...");
+  const [sudahMasukKlan, setSudahMasukKlan] = useState(false);
+  const [anggota, setAnggota] = useState<AnggotaTabel[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [idKlan, setIdKlan] = useState<number | null>(null);
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const nama = params.get("nama");
-    if (nama) setNamaKlan(nama);
+    const fetchUserStatus = async () => {
+      try {
+        const token = sessionStorage.getItem("accessToken");
+        if (!token) throw new Error("Token not found");
+
+        const res = await fetch("http://localhost:3000/api/auth/me/full", {
+          method: "GET",
+          headers: { Authorization: `Bearer ${token}` },
+        });
+
+        const json: ApiResponse<{ id_klan: number | null }> = await res.json();
+        if (json.success && json.data.id_klan) {
+          setSudahMasukKlan(true);
+        }
+      } catch (err) {
+        console.error("Gagal cek status user:", err);
+      }
+    };
+
+    fetchUserStatus();
   }, []);
+
+  useEffect(() => {
+    const fetchKlan = async () => {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const nama = params.get("nama");
+        if (!nama) return;
+
+        const res = await fetch(
+          `http://localhost:3000/api/clan/by-name?nama=${encodeURIComponent(nama)}`
+        );
+        const json: ApiResponse<Klan> = await res.json();
+
+        if (json.success) {
+          const klan = json.data;
+          setNamaKlan(klan.nama_klan);
+          setIdKlan(klan.id_klan);
+
+          const anggotaFormatted: AnggotaTabel[] = klan.siswa.map((s) => ({
+            nama: `${s.nama_depan} ${s.nama_belakang}`,
+            xp: s.poin_total,
+            misi: "Belum tersedia",
+          }));
+
+          setAnggota(anggotaFormatted);
+        }
+      } catch (error) {
+        console.error("Gagal memuat klan:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchKlan();
+  }, []);
+
+  const handleMasukKlan = async () => {
+    if (!idKlan) return alert("ID klan tidak ditemukan");
+
+    const konfirmasi = confirm(`Yakin ingin bergabung dengan klan "${namaKlan}"?`);
+    if (!konfirmasi) return;
+
+    try {
+      const token = sessionStorage.getItem("accessToken");
+      if (!token) throw new Error("Token tidak ditemukan");
+
+      const res = await fetch("http://localhost:3000/api/clan/join", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ id_klan: idKlan }),
+      });
+
+      const json: ApiResponse<null> = await res.json();
+      if (json.success) {
+        alert("Berhasil bergabung dengan klan!");
+        window.location.href = `/clans/antarklan?nama=${encodeURIComponent(namaKlan)}`;
+      } else {
+        alert("Gagal bergabung: " + json.message);
+      }
+    } catch (error) {
+      console.error("Error saat masuk klan:", error);
+      alert("Terjadi kesalahan saat masuk ke klan.");
+    }
+  };
+
+  if (loading) {
+    return <div className="sm:ml-64 p-6">Loading...</div>;
+  }
 
   return (
     <section className="sm:ml-64">
@@ -69,8 +142,14 @@ const KlanOrangLain = () => {
         </div>
 
         <div className="flex justify-start gap-2 items-center text-sm">
-          <button className="mb-6 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded shadow">
-            Masuk Klan
+          <button
+            onClick={handleMasukKlan}
+            disabled={sudahMasukKlan}
+            className={`mb-6 font-semibold py-2 px-4 rounded shadow text-white ${
+              sudahMasukKlan ? "bg-gray-400 cursor-not-allowed" : "bg-orange-500 hover:bg-orange-600"
+            }`}
+          >
+            {sudahMasukKlan ? "Sudah Bergabung" : "Masuk Klan"}
           </button>
         </div>
 
@@ -78,9 +157,9 @@ const KlanOrangLain = () => {
           <table className="w-full text-sm text-left text-gray-500">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50">
               <tr>
-                <th scope="col" className="px-6 py-3">Anggota</th>
-                <th scope="col" className="px-6 py-3">Kontribusi XP</th>
-                <th scope="col" className="px-6 py-3">Misi Harian</th>
+                <th className="px-6 py-3">Anggota</th>
+                <th className="px-6 py-3">Kontribusi XP</th>
+                <th className="px-6 py-3">Misi Harian</th>
               </tr>
             </thead>
             <tbody>
@@ -100,6 +179,7 @@ const KlanOrangLain = () => {
           </table>
         </div>
       </div>
+
       <div className="flex justify-center gap-2 items-center text-sm m-5 sm:justify-end">
         <button
           className="px-4 py-1.5 rounded-md bg-blue-700 text-white flex items-center gap-1 disabled:opacity-50"
