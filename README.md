@@ -36,6 +36,8 @@ Pastikan sistem Anda telah terinstal perangkat lunak berikut:
 
 ### Menjalankan Aplikasi dalam Mode Development
 
+#### PASTIKAN SEBELUM MEMULAI SERVER DEVELOPMENT, BACKEND SUDAH AKTIF
+
 1. **Memulai server development:**
    ```bash
    npm run dev
