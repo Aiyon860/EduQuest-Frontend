@@ -24,26 +24,25 @@ const Penghargaan = () => {
                 </div>
 
                 <div className="bg-white rounded-md shadow-md p-4 border-l-8 border-blue-800">
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                         <div>
-                            <h3 className="text-lg font-semibold mb-2 text-left">Speed</h3>
-                            <div>
-                                <BadgeGrid />
-                            </div>
+                            <BadgeGrid id_tipe_penghargaan={1} />
                         </div>
 
                         <div>
-                            <h3 className="text-lg font-semibold mb-2 text-left">Completion</h3>
-                            <div className="grid grid-cols-3 gap-2 mt-2 sm:grid-cols-5 rounded-md p-2 w-full justify-items-start">
-                                {[...Array(10)].map((_, i) => (
-                                    <div
-                                        key={i}
-                                        className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center"
-                                    >
-                                        <Award size={20} color="white" />
-                                    </div>
-                                ))}
-                            </div>
+                            <BadgeGrid id_tipe_penghargaan={2} />
+                        </div>
+
+                        <div>
+                            <BadgeGrid id_tipe_penghargaan={3} />
+                        </div>
+
+                        <div>
+                            <BadgeGrid id_tipe_penghargaan={4} />
+                        </div>
+
+                        <div>
+                            <BadgeGrid id_tipe_penghargaan={5} />
                         </div>
                     </div>
                 </div>
