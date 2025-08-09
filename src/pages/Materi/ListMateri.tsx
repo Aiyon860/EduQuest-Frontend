@@ -170,7 +170,7 @@ const ListMateri = () => {
                   <div className="bg-[#003566] text-white w-10 h-10 flex items-center justify-center rounded-md font-bold mr-4">
                     {index + 1}
                   </div>
-                  <span className="text-gray-900 font-medium">{item.judul}</span>
+                  <span className="text-gray-900 font-medium">{capitalize(item.judul)}</span>
                 </Link>
               );
             })}
