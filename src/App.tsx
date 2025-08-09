@@ -34,7 +34,7 @@ import HistoryPengerjaan from './pages/HistoryPengerjaan/ListSoal';
 // import Penghargaan from '@/pages/Penghargaan/Penghargaan'
 // import ImportFileExcel from '@/components/ImportFileExcel'
 // import ImportFilePdf from '@/components/ImportFilePdf'
-// import KlanOrangLain from '@/pages/PapanPeringkat/KlanOrangLain/KlanOrangLain'f
+// import KlanOrangLain from '@/pages/PapanPeringkat/KlanOrangLain/KlanOrangLain'
 
 function App() {
   return (
