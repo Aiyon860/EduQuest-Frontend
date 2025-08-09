@@ -100,3 +100,4 @@ const BuatKlan = () => {
 };
 
 export default BuatKlan;
+

@@ -111,11 +111,10 @@ const KlanSaya = () => {
           <button
             onClick={handleKeluarKlan}
             disabled={!profile?.klan}
-            className={`px-6 py-2 rounded-lg font-semibold text-white ${
-              profile?.klan
+            className={`px-6 py-2 rounded-lg font-semibold text-white ${profile?.klan
                 ? "bg-orange-500 hover:bg-orange-600"
                 : "bg-gray-400 cursor-not-allowed"
-            }`}
+              }`}
           >
             Keluar Klan
           </button>
@@ -125,10 +124,15 @@ const KlanSaya = () => {
           </button>
           <button
             onClick={() => (window.location.href = "/clans/buat")}
-            className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-2 rounded-lg"
+            disabled={!!profile?.klan}
+            className={`font-semibold px-6 py-2 rounded-lg text-white ${profile?.klan
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-orange-500 hover:bg-orange-600"
+              }`}
           >
             Buat Klan
           </button>
+
         </div>
 
         <div className="relative overflow-x-auto bg-white rounded-lg shadow w-full">

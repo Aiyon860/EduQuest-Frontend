@@ -58,7 +58,14 @@ const Profile = () => {
   useEffect(() => {
     const fetchSemester = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/semester");
+        const token = sessionStorage.getItem("accessToken");
+        if (!token) throw new Error("Token not found");
+        const res = await fetch("http://localhost:3000/api/semester", {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         const json = await res.json();
         if (json.success) setSemesterList(json.data);
       } catch (err) {
