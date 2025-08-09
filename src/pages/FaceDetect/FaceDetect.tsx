@@ -1,70 +1,73 @@
-import React, { useRef, useEffect, useState } from 'react';
-import * as blazeface from '@tensorflow-models/blazeface';
-import '@tensorflow/tfjs';
-import Warning from '../../components/Warning';
+import React, { useRef, useEffect, useState } from "react";
+import * as blazeface from "@tensorflow-models/blazeface";
+import "@tensorflow/tfjs";
+import Warning from "../../components/Warning";
 
 const FaceDetection: React.FC = () => {
-    const videoRef = useRef<HTMLVideoElement | null>(null);
-    const [model, setModel] = useState<blazeface.BlazeFaceModel | null>(null);
-    const [showWarning, setShowWarning] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [model, setModel] = useState<blazeface.BlazeFaceModel | null>(null);
+  const [showWarning, setShowWarning] = useState(false);
 
-    useEffect(() => {
-        const loadModel = async () => {
-            const loadedModel = await blazeface.load();
-            setModel(loadedModel);
-        };
-
-        loadModel();
-    }, []);
-
-    useEffect(() => {
-        if (window.location.pathname === '/soal/pilgan' || window.location.pathname === '/soal/isian') {
-            startCamera();
-        }
-    }, [model]);
-
-    const startCamera = async () => {
-        try {
-            const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-            if (videoRef.current) {
-                videoRef.current.srcObject = stream;
-                videoRef.current.play();
-            }
-            detectFace();
-        } catch (err) {
-            console.error('Gagal mengakses kamera:', err);
-        }
+  useEffect(() => {
+    const loadModel = async () => {
+      const loadedModel = await blazeface.load();
+      setModel(loadedModel);
     };
 
-    const detectFace = async () => {
-        if (!model || !videoRef.current) return;
+    loadModel();
+  }, []);
 
-        const video = videoRef.current;
+  useEffect(() => {
+    if (
+      window.location.pathname === "/soal/pilgan" ||
+      window.location.pathname === "/soal/isian"
+    ) {
+      startCamera();
+    }
+  }, [model]);
 
-        const detect = async () => {
-            if (video.readyState === 4) {
-                const predictions = await model.estimateFaces(video, false);
+  const startCamera = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream;
+        videoRef.current.play();
+      }
+      detectFace();
+    } catch (err) {
+      console.error("Gagal mengakses kamera:", err);
+    }
+  };
 
-                if (predictions.length >= 2 && !showWarning) {
-                    setShowWarning(true);
+  const detectFace = async () => {
+    if (!model || !videoRef.current) return;
 
-                    const stream = video.srcObject as MediaStream;
-                    stream?.getTracks().forEach((track) => track.stop());
-                }
-            }
+    const video = videoRef.current;
 
-            requestAnimationFrame(detect);
-        };
+    const detect = async () => {
+      if (video.readyState === 4) {
+        const predictions = await model.estimateFaces(video, false);
 
-        detect();
+        if (predictions.length >= 2 && !showWarning) {
+          setShowWarning(true);
+
+          const stream = video.srcObject as MediaStream;
+          stream?.getTracks().forEach((track) => track.stop());
+        }
+      }
+
+      requestAnimationFrame(detect);
     };
 
-    return (
-        <div>
-            <video ref={videoRef} style={{ display: 'none' }} autoPlay muted />
-            {showWarning && <Warning />}
-        </div>
-    );
+    detect();
+  };
+
+  return (
+    <div>
+      <video ref={videoRef} style={{ display: "none" }} autoPlay muted />
+      {showWarning && <Warning />}
+    </div>
+  );
 };
 
 export default FaceDetection;

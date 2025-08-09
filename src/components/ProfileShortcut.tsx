@@ -84,7 +84,7 @@ const ProfileShortcut = () => {
         const token = sessionStorage.getItem("accessToken");
         if (!token) throw new Error("Token tidak ditemukan");
 
-        const response = await fetch("http://localhost:3000/api/auth/me/full", {
+        const response = await fetch("/api/auth/me/full", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

@@ -40,6 +40,7 @@ const ProtectedRoute = () => {
             const data = await refreshRes.json();
             const newAccessToken = data.data.accessToken;
 
+            sessionStorage.removeItem("accessToken");
             sessionStorage.setItem("accessToken", newAccessToken);
 
             setIsAuthenticated(true);
